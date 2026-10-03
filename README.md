@@ -1,6 +1,6 @@
-# LeadZone AI — pre-launch page
+# Larzo — pre-launch page
 
-Animated waitlist / pre-launch landing page for **LeadZone AI**.
+Animated waitlist / pre-launch landing page for **Larzo**.
 
 **Stack:** Next.js 15 (App Router) · React 19 · Tailwind CSS 3 · Framer Motion 12 · lucide-react
 **Fonts:** Syne (display) · DM Sans (body) · JetBrains Mono (data) — same as the product.

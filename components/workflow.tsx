@@ -102,7 +102,7 @@ export function Workflow() {
   return (
     <section className="relative py-20 sm:py-28">
       <div className="container">
-        <SectionHeading eyebrow="The rest of the workflow" title="Replace the stack," accent="keep the context." copy="Finding the lead is half the job. LeadZone carries every insight through outreach and into your pipeline — no exports, no copy-paste." />
+        <SectionHeading eyebrow="The rest of the workflow" title="Replace the stack," accent="keep the context." copy="Finding the lead is half the job. Larzo carries every insight through outreach and into your pipeline — no exports, no copy-paste." />
         <div className="mt-16 grid gap-4 md:grid-cols-3">
           {cards.map((c, i) => (
             <Reveal key={c.t} delay={i * 0.08}>

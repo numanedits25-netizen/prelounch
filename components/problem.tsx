@@ -53,10 +53,10 @@ export function Problem() {
           <div className="absolute left-1/2 top-5 z-20 -translate-x-1/2">
             <div className="relative h-8 w-60">
               <motion.span style={{ opacity: labelBefore }} className="absolute inset-0 flex items-center justify-center gap-2 rounded-full border border-rose-400/20 bg-rose-400/[0.06] font-mono text-[11px] uppercase tracking-[0.2em] text-rose-200">
-                Without LeadZone
+                Without Larzo
               </motion.span>
               <motion.span style={{ opacity: labelAfter }} className="absolute inset-0 flex items-center justify-center gap-2 rounded-full border border-cyan-400/25 bg-cyan-400/[0.07] font-mono text-[11px] uppercase tracking-[0.2em] text-cyan-200">
-                With LeadZone
+                With Larzo
               </motion.span>
             </div>
           </div>

@@ -8,13 +8,13 @@ import { SectionHeading } from "./ui/section-heading";
 import { SpotlightCard } from "./ui/spotlight-card";
 
 const bars = [
-  { label: "LeadZone", value: 91.4, grad: "linear-gradient(90deg,#7c3aed,#06b6d4)", hi: true },
+  { label: "Larzo", value: 91.4, grad: "linear-gradient(90deg,#7c3aed,#06b6d4)", hi: true },
   { label: "Wappalyzer", value: 65.2, grad: "linear-gradient(90deg,#334155,#475569)", hi: false }
 ];
 
 const principles = [
   { icon: FileCheck2, title: "Evidence on every claim", copy: "Each finding is traced to the page, signal or measurement that produced it. Click through and see it yourself." },
-  { icon: CircleHelp, title: "“Unknown” beats a guess", copy: "If a signal can't be verified, LeadZone says so — instead of inventing a number to fill the card." },
+  { icon: CircleHelp, title: "“Unknown” beats a guess", copy: "If a signal can't be verified, Larzo says so — instead of inventing a number to fill the card." },
   { icon: Scale, title: "Deterministic confidence", copy: "Same inputs, same score. Confidence comes from rules you can inspect, not a model's mood." },
   { icon: Fingerprint, title: "Verified ownership", copy: "Websites and social profiles are checked against the business before they're attributed to it." }
 ];
@@ -27,7 +27,7 @@ export function Proof() {
           eyebrow="Honesty over vanity metrics"
           title="Evidence,"
           accent="not vibes."
-          copy="Most lead tools guess and dress it up. LeadZone is built to be right — and to tell you when it isn't sure."
+          copy="Most lead tools guess and dress it up. Larzo is built to be right — and to tell you when it isn't sure."
         />
 
         <div className="mt-16 grid gap-4 lg:grid-cols-[1.15fr_0.85fr]">
@@ -101,7 +101,7 @@ export function Proof() {
                 ))}
               </div>
               <p className="mt-5 text-xs leading-relaxed text-mute-3">
-                Precision 100 means zero false positives: when LeadZone says a site runs a technology, it does. Internal external-validation benchmark against websites never used in development.
+                Precision 100 means zero false positives: when Larzo says a site runs a technology, it does. Internal external-validation benchmark against websites never used in development.
               </p>
             </SpotlightCard>
           </Reveal>

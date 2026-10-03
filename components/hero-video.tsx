@@ -59,7 +59,7 @@ export function HeroVideo({ className, controlsClassName }: { className?: string
         loop
         playsInline
         preload="auto"
-        aria-label="LeadZone product film: real businesses, what to sell, the tools running their site, and a full executive report"
+        aria-label="Larzo product film: real businesses, what to sell, the tools running their site, and a full executive report"
         onPlay={() => setPlaying(true)}
         onPause={() => setPlaying(false)}
         onLoadedData={() => setReady(true)}

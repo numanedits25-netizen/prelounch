@@ -27,7 +27,7 @@ export function Founding() {
           <div className="absolute -right-24 -top-24 size-[420px] rounded-full bg-violet-600/25 blur-[120px]" />
           <div className="absolute -bottom-32 -left-20 size-[380px] rounded-full bg-cyan-500/15 blur-[120px]" />
           <div className="relative">
-            <SectionHeading eyebrow="Founding members" title="Get in before" accent="everyone else." copy="LeadZone opens in waves. The earlier you join, the better your seat." />
+            <SectionHeading eyebrow="Founding members" title="Get in before" accent="everyone else." copy="Larzo opens in waves. The earlier you join, the better your seat." />
             <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {perks.map((p, i) => (
                 <Reveal key={p.t} delay={i * 0.07}>

@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-/** Brand mark: the infinity-loop arrow (transparent PNG cut from the supplied artwork). */
+/** Brand mark: the Larzo orbit-arrow (transparent PNG cut from the supplied artwork). */
 export function LogoMark({ className }: { className?: string }) {
   return (
     // eslint-disable-next-line @next/next/no-img-element
@@ -18,10 +18,10 @@ export function LogoMark({ className }: { className?: string }) {
 
 export function Logo({ className }: { className?: string }) {
   return (
-    <span className={cn("group flex items-center gap-2", className)} aria-label="LeadZone AI">
+    <span className={cn("group flex items-center gap-2", className)} aria-label="Larzo">
       <LogoMark className="transition-transform duration-500 group-hover:-rotate-6 group-hover:scale-110" />
-      <span className="font-display text-[17px] font-bold tracking-tight text-white">
-        LeadZone<span className="text-cyan-400"> AI</span>
+      <span className="font-display text-[19px] font-bold uppercase leading-none tracking-[0.14em] text-white">
+        L<span className="bg-[linear-gradient(160deg,#22d3ee,#3b82f6_55%,#a855f7)] bg-clip-text text-transparent">A</span>RZO
       </span>
     </span>
   );

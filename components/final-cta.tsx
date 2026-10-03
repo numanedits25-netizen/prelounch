@@ -34,7 +34,7 @@ export function FinalCta() {
           <SplitWords text="already on the map." className="text-gradient" delay={0.25} />
         </h2>
         <Reveal delay={0.3}>
-          <p className="mx-auto mt-6 max-w-xl text-base text-mute sm:text-lg">LeadZone shows you where they are, what they need, and what to say. Claim your founding spot.</p>
+          <p className="mx-auto mt-6 max-w-xl text-base text-mute sm:text-lg">Larzo shows you where they are, what they need, and what to say. Claim your founding spot.</p>
         </Reveal>
         <Reveal delay={0.4} className="mt-10 flex w-full justify-center">
           <WaitlistForm id="final-form" />

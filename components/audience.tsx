@@ -27,7 +27,7 @@ export function Audience() {
                   </span>
                   <p className="font-display text-lg font-bold tracking-tight text-white">{w.t}</p>
                 </div>
-                <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.2em] text-cyan-300/80">LeadZone finds</p>
+                <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.2em] text-cyan-300/80">Larzo finds</p>
                 <p className="mt-1.5 text-sm leading-relaxed text-mute">{w.f}</p>
               </SpotlightCard>
             </Reveal>

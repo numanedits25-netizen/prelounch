@@ -3,7 +3,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Check } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import { RadarConsole } from "./radar-console";
 import { WaitlistForm } from "./waitlist-form";
 import { HeroVideo } from "./hero-video";
 
@@ -12,10 +11,6 @@ const ease = [0.22, 1, 0.36, 1] as const;
 export function Hero() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const rotateX = useTransform(scrollYProgress, [0, 0.35], [22, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.35], [0.92, 1]);
-  const y = useTransform(scrollYProgress, [0, 0.35], [40, 0]);
-  const glowOpacity = useTransform(scrollYProgress, [0, 0.4], [0.5, 1]);
   const isDesktop = useIsDesktop();
   const filmY = useTransform(scrollYProgress, [0, 0.4], [0, -80]);
   const filmOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0.25]);
@@ -105,7 +100,7 @@ export function Hero() {
                   animate={{ y: 0 }}
                   transition={{ duration: 1.1, delay: 0.6, ease }}
                 >
-                  LeadZone finds it.
+                  Larzo finds it.
                 </motion.span>
               </span>
             </h1>
@@ -116,7 +111,7 @@ export function Hero() {
               transition={{ duration: 0.8, delay: 0.85, ease }}
               className="mx-auto mt-6 max-w-[36rem] text-base leading-relaxed text-slate-300/80 sm:text-lg lg:mx-0"
             >
-              Scan any niche in any city. LeadZone audits every website, tech stack and social profile, scores each opportunity{" "}
+              Scan any niche in any city. Larzo audits every website, tech stack and social profile, scores each opportunity{" "}
               <span className="text-white">with evidence</span> — then writes the pitch. Prospecting, without the forty open tabs.
             </motion.p>
 
@@ -141,30 +136,19 @@ export function Hero() {
 
         {/* scroll cue */}
         <motion.a
-          href="#console"
+          href="#how"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.8, duration: 1 }}
           className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 font-mono text-[10px] uppercase tracking-[0.25em] text-mute-2 transition hover:text-white lg:flex"
         >
-          Try a live scan
+          See how it works
           <span className="relative h-9 w-[1px] overflow-hidden bg-white/10">
             <span className="absolute inset-x-0 top-0 h-1/2 animate-[scrollcue_1.8s_ease-in-out_infinite] bg-gradient-to-b from-cyan-300 to-transparent" />
           </span>
         </motion.a>
       </div>
 
-      {/* product console */}
-      <div className="container relative">
-        <div id="console" className="relative mx-auto mt-16 max-w-6xl scroll-mt-24 [perspective:1600px] sm:mt-20 lg:mt-4">
-          <motion.div style={{ opacity: glowOpacity }} className="pointer-events-none absolute inset-x-[8%] -top-10 bottom-10 -z-10 rounded-[60px] bg-brand-gradient opacity-40 blur-[90px]" />
-          <motion.div initial={{ opacity: 0, y: 80 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1.2, delay: 1.1, ease }}>
-            <motion.div style={{ rotateX, scale, y, transformOrigin: "50% 0%" }}>
-              <RadarConsole />
-            </motion.div>
-          </motion.div>
-        </div>
-      </div>
     </section>
   );
 }

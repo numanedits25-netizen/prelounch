@@ -13,7 +13,7 @@ const steps = [
     icon: Radar,
     title: "Discover",
     lead: "Every business on the map — not just page one.",
-    copy: "Type a niche and a city. LeadZone fans the query out across keywords, sub-categories and map tiles, then de-duplicates every result on its Google Place ID. One search, the whole market."
+    copy: "Type a niche and a city. Larzo fans the query out across keywords, sub-categories and map tiles, then de-duplicates every result on its Google Place ID. One search, the whole market."
   },
   {
     key: "understand",

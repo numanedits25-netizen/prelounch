@@ -40,12 +40,12 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-14 flex flex-col items-center justify-between gap-3 border-t border-white/[0.06] py-6 text-xs text-mute-3 sm:flex-row">
-          <p>© {new Date().getFullYear()} LeadZone AI · by Buildream AI</p>
+          <p>© {new Date().getFullYear()} Larzo · by Buildream AI</p>
           <p>Demo data on this page is illustrative.</p>
         </div>
       </div>
       <div aria-hidden="true" className="pointer-events-none select-none overflow-hidden">
-        <p className="text-gradient -mb-[0.22em] text-center font-display text-[15.5vw] font-extrabold leading-none tracking-[-0.06em] opacity-[0.16]">LeadZone</p>
+        <p className="text-gradient -mb-[0.22em] text-center font-display text-[15.5vw] font-extrabold leading-none tracking-[-0.06em] opacity-[0.16]">LARZO</p>
       </div>
     </footer>
   );

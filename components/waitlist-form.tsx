@@ -37,7 +37,7 @@ export function WaitlistForm({ size = "lg", className, id }: { size?: "lg" | "md
   }
 
   const link = result && typeof window !== "undefined" ? `${window.location.origin}/?ref=${result.referralCode}` : "";
-  const shareText = encodeURIComponent("Just joined the LeadZone AI private beta — it finds local businesses with real gaps and writes the pitch. Get in early:");
+  const shareText = encodeURIComponent("Just joined the Larzo private beta — it finds local businesses with real gaps and writes the pitch. Get in early:");
 
   return (
     <div id={id} className={cn("w-full", size === "lg" ? "max-w-xl" : "max-w-lg", className)}>

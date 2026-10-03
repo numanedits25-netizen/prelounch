@@ -19,7 +19,7 @@ export type WaitlistResult = {
 
 export type WaitlistError = { ok: false; error: string };
 
-const KEY = "lz_waitlist_v1";
+const KEY = "larzo_waitlist_v1";
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 export function isValidEmail(email: string) {
