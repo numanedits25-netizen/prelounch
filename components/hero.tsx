@@ -39,8 +39,8 @@ export function Hero() {
           >
             {/* glow halo behind the film */}
             <div className="absolute inset-[8%] -z-10 rounded-[48px] bg-[conic-gradient(from_200deg,#22d3ee,#3b82f6,#a855f7,#e879f9,#22d3ee)] opacity-30 blur-[80px]" />
-            <div className="film-feather pointer-events-auto relative h-full w-full">
-              {isDesktop === true && <HeroVideo controlsClassName="bottom-[14%] right-[12%]" />}
+            <div className="pointer-events-auto relative h-full w-full">
+              {isDesktop === true && <HeroVideo className="film-feather" controlsClassName="bottom-[11%] right-[11%]" />}
             </div>
             {/* HUD corners */}
             <Hud />
@@ -48,7 +48,7 @@ export function Hero() {
         </motion.div>
         </div>
 
-        <div className="container relative">
+        <div className="container relative lg:pointer-events-none">
           {/* mobile / tablet film */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -57,12 +57,12 @@ export function Hero() {
             className="relative -mx-5 mb-8 sm:-mx-6 lg:hidden"
           >
             <div className="absolute inset-[10%] -z-10 bg-[conic-gradient(from_200deg,#22d3ee,#3b82f6,#a855f7,#e879f9,#22d3ee)] opacity-30 blur-[60px]" />
-            <div className="film-feather-sm relative aspect-video w-full">
-              {isDesktop === false && <HeroVideo controlsClassName="bottom-[10%] right-[6%]" />}
+            <div className="relative aspect-video w-full">
+              {isDesktop === false && <HeroVideo className="film-feather-sm" controlsClassName="bottom-[2%] left-1/2 -translate-x-1/2 sm:bottom-[6%]" />}
             </div>
           </motion.div>
 
-          <div className="relative z-10 max-w-[42rem] text-center lg:max-w-[40rem] lg:py-32 lg:text-left xl:max-w-[44rem]">
+          <div className="relative z-10 max-w-[42rem] text-center lg:pointer-events-auto lg:max-w-[40rem] lg:py-32 lg:text-left xl:max-w-[44rem]">
             <motion.a
               href="#join"
               initial={{ opacity: 0, y: 12 }}
@@ -81,7 +81,7 @@ export function Hero() {
             </motion.a>
 
             <h1 className="mt-7 font-display text-[2.35rem] font-bold leading-[1.02] tracking-[-0.04em] text-white sm:text-[3.4rem] lg:text-[3.25rem] xl:text-[3.75rem]">
-              {["Every", "local", "business", "|", "has", "a", "gap."].map((w, i) =>
+              {["Every", "local", "business", "|", "has", "a\u00A0gap."].map((w, i) =>
                 w === "|" ? (
                   <br key={i} className="hidden sm:block" />
                 ) : (

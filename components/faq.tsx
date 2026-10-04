@@ -20,7 +20,7 @@ export function Faq() {
   return (
     <section id="faq" className="relative py-20 sm:py-28">
       <div className="container grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
-        <SectionHeading align="left" eyebrow="FAQ" title="Questions," accent="answered." copy="Anything else? Reply to your waitlist email — a human reads every one." />
+        <SectionHeading align="left" eyebrow="FAQ" title="Questions," accent="answered." copy={<>Anything else? <a href="mailto:leadzoneai@gmail.com" className="text-cyan-300 underline-offset-4 hover:underline">Email the team</a> — a human reads every one.</>} />
         <div className="min-w-0 space-y-3">
           {faqs.map((f, i) => {
             const isOpen = open === i;

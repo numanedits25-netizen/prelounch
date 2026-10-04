@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
+import { AnimatePresence, motion, useInView, useMotionValueEvent, useScroll } from "framer-motion";
 import { BarChart3, Check, Eye, Fingerprint, Globe, Layers, Mail, MapPin, MousePointerClick, Radar, Send, Share2, Store, Target, TrendingUp, Wand2 } from "lucide-react";
 import { useRef, useState } from "react";
 import { cn } from "@/lib/utils";
@@ -134,13 +134,22 @@ export function HowItWorks() {
             </div>
             <p className="mt-4 font-display text-2xl font-bold tracking-tight text-white">{s.lead}</p>
             <p className="mt-2 text-[15px] leading-relaxed text-mute">{s.copy}</p>
-            <div className="glass relative mt-6 aspect-[1.05] overflow-hidden rounded-[28px]">
-              <StepVisual k={s.key} />
-            </div>
+            <InViewVisual k={s.key} />
           </motion.div>
         ))}
       </div>
     </section>
+  );
+}
+
+/** Mobile/tablet: only start a step's animation once the user can actually see it. */
+function InViewVisual({ k }: { k: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const seen = useInView(ref, { once: true, amount: 0.45 });
+  return (
+    <div ref={ref} className="glass relative mx-auto mt-6 aspect-[1.05] max-w-xl overflow-hidden rounded-[28px] sm:aspect-[1.25]">
+      {seen ? <StepVisual k={k} /> : null}
+    </div>
   );
 }
 

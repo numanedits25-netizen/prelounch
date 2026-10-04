@@ -1,4 +1,4 @@
-import { LinkedinIcon, XIcon, InstagramIcon } from "./ui/brand-icons";
+import Link from "next/link";
 import { Logo } from "./ui/logo";
 
 export function Footer() {
@@ -10,32 +10,23 @@ export function Footer() {
             <Logo />
             <p className="mt-4 text-sm leading-relaxed text-mute">Evidence-backed local business intelligence for agencies. Find the gap, prove it, pitch it.</p>
           </div>
-          <div className="grid grid-cols-2 gap-10 text-sm sm:grid-cols-3">
+          <div className="grid grid-cols-2 gap-16 text-sm">
             <div>
               <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-mute-3">Product</p>
               <ul className="mt-4 space-y-2.5 text-mute">
-                <li><a className="hover:text-white" href="#how">How it works</a></li>
-                <li><a className="hover:text-white" href="#engines">Engines</a></li>
-                <li><a className="hover:text-white" href="#proof">Proof</a></li>
+                <li><a className="hover:text-white" href="/#how">How it works</a></li>
+                <li><a className="hover:text-white" href="/#engines">Engines</a></li>
+                <li><a className="hover:text-white" href="/compare">Compare</a></li>
+                <li><Link className="hover:text-white" href="/watch">Watch the film</Link></li>
               </ul>
             </div>
             <div>
               <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-mute-3">Company</p>
               <ul className="mt-4 space-y-2.5 text-mute">
-                <li><a className="hover:text-white" href="#faq">FAQ</a></li>
+                <li><a className="hover:text-white" href="/#faq">FAQ</a></li>
                 <li><a className="hover:text-white" href="mailto:leadzoneai@gmail.com">Contact</a></li>
-                <li><a className="hover:text-white" href="#join">Join waitlist</a></li>
+                <li><a className="hover:text-white" href="/#join">Join waitlist</a></li>
               </ul>
-            </div>
-            <div>
-              <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-mute-3">Follow</p>
-              <div className="mt-4 flex gap-2">
-                {[XIcon, LinkedinIcon, InstagramIcon].map((I, i) => (
-                  <a key={i} href="#" aria-label="Social link" className="flex size-9 items-center justify-center rounded-full border border-white/10 text-mute transition hover:border-white/25 hover:text-white">
-                    <I className="size-4" />
-                  </a>
-                ))}
-              </div>
             </div>
           </div>
         </div>

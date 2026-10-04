@@ -101,7 +101,7 @@ export function Proof() {
                 ))}
               </div>
               <p className="mt-5 text-xs leading-relaxed text-mute-3">
-                Precision 100 means zero false positives: when Larzo says a site runs a technology, it does. Internal external-validation benchmark against websites never used in development.
+                Precision 100 means zero false positives: when Larzo says a site runs a technology, it does. Larzo's own out-of-sample benchmark on 142 websites never used in development.
               </p>
             </SpotlightCard>
           </Reveal>

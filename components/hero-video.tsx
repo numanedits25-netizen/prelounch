@@ -1,6 +1,7 @@
 "use client";
 
-import { Pause, Play } from "lucide-react";
+import Link from "next/link";
+import { Pause, Play, Volume2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
@@ -67,23 +68,30 @@ export function HeroVideo({ className, controlsClassName }: { className?: string
         <source src="/video/hero.webm" type="video/webm" />
         <source src="/video/hero.mp4" type="video/mp4" />
       </video>
-      <button
-        type="button"
-        onClick={toggle}
-        aria-label={playing ? "Pause product film" : "Play product film"}
-        className={cn(
-          "group absolute z-20 flex items-center gap-2 rounded-full border border-white/15 bg-black/50 py-1.5 pl-1.5 pr-3 font-mono text-[10px] uppercase tracking-[0.18em] text-slate-200 backdrop-blur-md transition hover:border-cyan-300/50 hover:text-white",
-          controlsClassName
-        )}
-      >
-        <span className="grid size-6 place-items-center rounded-full bg-white/10 transition group-hover:bg-cyan-400/20">
-          {playing ? <Pause className="size-3" /> : <Play className="size-3 translate-x-[1px]" />}
-        </span>
-        <span className="flex items-center gap-1.5">
-          <span className={cn("size-1.5 rounded-full", playing ? "animate-pulse bg-rose-400" : "bg-slate-500")} />
-          Product film
-        </span>
-      </button>
+      <div className={cn("absolute z-20 flex items-center gap-2", controlsClassName)}>
+        <Link
+          href="/watch"
+          onClick={() => sessionStorage.setItem("larzo_film_from", "site")}
+          aria-label="Watch the full Larzo film with sound"
+          className="group/watch relative flex items-center gap-2.5 whitespace-nowrap rounded-full bg-white py-1.5 pl-1.5 pr-4 text-[13px] font-semibold text-ink shadow-[0_10px_40px_-8px_rgba(34,211,238,.65)] transition duration-300 hover:scale-[1.04] hover:shadow-[0_14px_50px_-6px_rgba(124,58,237,.8)] sm:text-sm"
+        >
+          <span className="relative grid size-7 place-items-center rounded-full bg-brand-gradient text-white sm:size-8">
+            <span className="absolute inset-0 animate-ping2 rounded-full bg-cyan-400/60" />
+            <Play className="relative size-3.5 translate-x-[1px] fill-white sm:size-4" />
+          </span>
+          Watch full film
+          <Volume2 className="size-3.5 text-slate-500 transition group-hover/watch:text-violet-600" />
+        </Link>
+        <button
+          type="button"
+          onClick={toggle}
+          aria-label={playing ? "Pause background film" : "Play background film"}
+          title={playing ? "Pause" : "Play"}
+          className="grid size-9 place-items-center rounded-full border border-white/15 bg-black/50 text-slate-200 backdrop-blur-md transition hover:border-cyan-300/50 hover:text-white sm:size-10"
+        >
+          {playing ? <Pause className="size-3.5" /> : <Play className="size-3.5 translate-x-[1px]" />}
+        </button>
+      </div>
     </>
   );
 }

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { DM_Sans, JetBrains_Mono, Syne } from "next/font/google";
 import "./globals.css";
+import { SmoothAnchors } from "@/components/smooth-anchors";
 
 const syne = Syne({ subsets: ["latin"], variable: "--font-syne", weight: ["500", "600", "700", "800"] });
 const dmSans = DM_Sans({ subsets: ["latin"], variable: "--font-dm-sans" });
@@ -26,7 +27,10 @@ export const viewport: Viewport = { themeColor: "#050507" };
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={`${syne.variable} ${dmSans.variable} ${mono.variable}`}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <SmoothAnchors />
+      </body>
     </html>
   );
 }

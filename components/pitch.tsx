@@ -12,7 +12,7 @@ const assets = [
     icon: Mail,
     label: "Cold email",
     meta: "Subject: Patients are leaving brightsmile-dental.com before it loads",
-    body: "Hi Dr. Patel,\n\nI ran your site through Google's real-user data: on mobile it takes 4.9s to show anything — most visitors give up after 3. There's also no way to book online, so the 312 people who loved you on Google have to call during office hours.\n\nWe fix both in about two weeks. Want the 1-page audit?"
+    body: "Hi Dr. Patel,\n\nI ran your site through Google's real-user data: on mobile it takes 4.9s to show anything, and more than half of mobile visitors leave after 3. There's also no way to book online, so the 312 people who loved you on Google have to call during office hours.\n\nWe can fix both in about three weeks. Want the 1-page audit?"
   },
   {
     id: "call",

@@ -1,3 +1,4 @@
+import { Compare } from "@/components/compare";
 import { Audience } from "@/components/audience";
 import { Engines } from "@/components/engines";
 import { Faq } from "@/components/faq";
@@ -25,6 +26,7 @@ export default function Page() {
       <Proof />
       <Pitch />
       <Workflow />
+      <Compare />
       <Audience />
       <Founding />
       <Faq />
