@@ -27,6 +27,14 @@ export const viewport: Viewport = { themeColor: "#050507" };
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={`${syne.variable} ${dmSans.variable} ${mono.variable}`}>
+      <head>
+        {/* Open at the hero on fresh visits/reloads: drop stale #hash before the browser jumps to it */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if("scrollRestoration" in history)history.scrollRestoration="manual";var f=+sessionStorage.getItem("larzo_hash_nav")||0;if(location.hash&&Date.now()-f>15000){history.replaceState(null,"",location.pathname+location.search)}}catch(e){}`
+          }}
+        />
+      </head>
       <body>
         {children}
         <SmoothAnchors />

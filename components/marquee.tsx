@@ -38,7 +38,7 @@ function Row({ items, reverse }: { items: typeof rowA; reverse?: boolean }) {
 
 const stats = [
   { v: 5, s: "", l: "Intelligence engines", n: "website · tech · social · business · opportunity" },
-  { v: 100, s: "+", l: "Businesses per search", n: "fanned out across keywords, sub-categories & map tiles" },
+  { v: 1, s: "", l: "Search to a ranked list", n: "every business found, audited & scored in one pass" },
   { v: 5, s: "", l: "AI outreach assets", n: "email · call script · proposal · audit · DM" },
   { v: 0, s: "", l: "Invented numbers", n: "unknown is shown as unknown" }
 ];
