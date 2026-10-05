@@ -24,7 +24,7 @@ export function Footer() {
               <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-mute-3">Company</p>
               <ul className="mt-4 space-y-2.5 text-mute">
                 <li><a className="hover:text-white" href="/#faq">FAQ</a></li>
-                <li><a className="hover:text-white" href="mailto:leadzoneai@gmail.com">Contact</a></li>
+                <li><a className="hover:text-white" href="mailto:larzoai@gmail.com">Contact</a></li>
                 <li><a className="hover:text-white" href="/#join">Join waitlist</a></li>
                 <li><Link className="hover:text-white" href="/privacy">Privacy</Link></li>
                 <li><Link className="hover:text-white" href="/terms">Terms</Link></li>
