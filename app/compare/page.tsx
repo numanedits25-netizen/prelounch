@@ -9,16 +9,26 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { SpotlightCard } from "@/components/ui/spotlight-card";
 import { WaitlistForm } from "@/components/waitlist-form";
 import { rivals, versus } from "@/lib/compare";
+import { JsonLd } from "@/components/json-ld";
+import { alternatives } from "@/lib/alternatives";
+import { breadcrumbLd, webPageLd } from "@/lib/seo";
+
+const title = "Larzo vs Google Maps Scrapers, BuiltWith, Wappalyzer & Apollo";
+const description =
+  "Feature-by-feature: how Larzo compares with Google Maps scrapers (Outscraper, Apify), tech lookups (BuiltWith, Wappalyzer), B2B databases (Apollo) and the DIY ChatGPT + spreadsheet stack for finding and pitching local businesses.";
 
 export const metadata: Metadata = {
-  title: "Larzo vs Maps scrapers, BuiltWith, Wappalyzer, Apollo & ChatGPT",
-  description:
-    "How Larzo compares with Google Maps scrapers, tech lookups, B2B databases and the DIY ChatGPT + spreadsheet stack for finding and pitching local businesses."
+  title: { absolute: `${title} | Larzo` },
+  description,
+  alternates: { canonical: "/compare" },
+  openGraph: { title, description, url: "/compare" },
+  twitter: { title, description }
 };
 
 export default function ComparePage() {
   return (
     <main className="relative">
+      <JsonLd data={[webPageLd({ path: "/compare", title, description }), breadcrumbLd([{ name: "Home", path: "/" }, { name: "Compare", path: "/compare" }])]} />
       <Nav />
       <section className="relative overflow-x-clip pb-16 pt-32 sm:pb-20 sm:pt-40">
         <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
@@ -28,6 +38,7 @@ export default function ComparePage() {
         </div>
         <div className="container">
           <SectionHeading
+            as="h1"
             eyebrow="Compare"
             title="Larzo vs"
             accent="the usual prospecting stack."
@@ -80,6 +91,16 @@ export default function ComparePage() {
           <p className="mt-8 text-[11px] leading-relaxed text-mute-3">
             Compared by tool category, based on each category&apos;s core, publicly documented features (Oct 2026). Individual products vary and some offer add-ons. The Wappalyzer figure comes from Larzo&apos;s own out-of-sample benchmark of 142 websites not used in development. Product names are trademarks of their owners and are used for identification only.
           </p>
+          <div className="mt-10">
+            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-mute-3">One-on-one comparisons</p>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {alternatives.map((a) => (
+                <Link key={a.slug} href={`/alternatives/${a.slug}`} className="rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-1.5 text-xs text-slate-300 transition hover:border-violet-400/30 hover:text-white">
+                  Larzo vs {a.name}
+                </Link>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 

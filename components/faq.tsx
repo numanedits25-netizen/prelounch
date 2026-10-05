@@ -4,16 +4,10 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Plus } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { faqs } from "@/lib/faqs";
 import { SectionHeading } from "./ui/section-heading";
 
-const faqs = [
-  { q: "What exactly is Larzo?", a: "A sales-intelligence workspace for people who sell services to local businesses. You search a niche and a city; Larzo finds the businesses, audits each one across five engines (website, technology, social, business, opportunity), ranks them by real opportunity and drafts the outreach." },
-  { q: "Where does the data come from?", a: "Business listings from Google Maps, website performance from Google PageSpeed and Chrome UX Report field data, technology detection from the site itself, and social profiles that are verified as belonging to the business. Every finding links back to its source." },
-  { q: "How is this different from a lead scraper?", a: "Scrapers give you a list. Larzo tells you which businesses on that list actually need what you sell, proves why with evidence, and writes the first message for you." },
-  { q: "Is the AI going to make things up?", a: "That's the one thing Larzo is designed not to do. Assets are grounded only in verified findings, and when a signal can't be confirmed the product says “unknown” rather than guessing." },
-  { q: "Which countries and niches work?", a: "Any niche that appears on Google Maps, in any city Google Maps covers. Dentists, roofers, med spas, restaurants, law firms, gyms — if it has a listing, Larzo can scan it." },
-  { q: "When do I get access, and what will it cost?", a: "Invites go out in waves, earliest signups first — sharing your referral link moves you up. Founding members lock in a special rate; full pricing will be announced before public launch." }
-];
+
 
 export function Faq() {
   const [open, setOpen] = useState<number | null>(0);

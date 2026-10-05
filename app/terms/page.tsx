@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { LegalPage, LegalSection } from "@/components/legal-page";
 import { COMPANY, CONTACT_EMAIL } from "@/lib/site";
 
-export const metadata: Metadata = { title: "Terms — Larzo", description: "Terms for using the Larzo website and private-beta waitlist." };
+export const metadata: Metadata = { title: "Terms of Use", alternates: { canonical: "/terms" }, description: "Terms for using the Larzo website and private-beta waitlist." };
 
 export default function TermsPage() {
   return (

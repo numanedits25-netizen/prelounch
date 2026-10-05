@@ -1,13 +1,26 @@
 import type { MetadataRoute } from "next";
+import { alternatives } from "@/lib/alternatives";
 import { SITE_URL } from "@/lib/site";
+import { useCases } from "@/lib/use-cases";
+
+/** Bump when page copy changes meaningfully, so lastmod stays honest. */
+const UPDATED = new Date("2026-10-05");
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
+  const page = (path: string, priority: number, changeFrequency: "weekly" | "monthly" | "yearly" = "monthly") => ({
+    url: `${SITE_URL}${path}`,
+    lastModified: UPDATED,
+    changeFrequency,
+    priority
+  });
   return [
-    { url: `${SITE_URL}/`, lastModified: now, changeFrequency: "weekly", priority: 1 },
-    { url: `${SITE_URL}/compare`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${SITE_URL}/watch`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
-    { url: `${SITE_URL}/privacy`, lastModified: now, changeFrequency: "yearly", priority: 0.2 },
-    { url: `${SITE_URL}/terms`, lastModified: now, changeFrequency: "yearly", priority: 0.2 }
+    page("/", 1, "weekly"),
+    page("/compare", 0.9),
+    ...useCases.map((u) => page(`/for/${u.slug}`, 0.8)),
+    page("/alternatives", 0.8),
+    ...alternatives.map((a) => page(`/alternatives/${a.slug}`, 0.7)),
+    page("/watch", 0.6),
+    page("/privacy", 0.2, "yearly"),
+    page("/terms", 0.2, "yearly")
   ];
 }

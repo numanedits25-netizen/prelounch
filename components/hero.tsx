@@ -111,7 +111,7 @@ export function Hero() {
               transition={{ duration: 0.8, delay: 0.85, ease }}
               className="mx-auto mt-6 max-w-[36rem] text-base leading-relaxed text-slate-300/80 sm:text-lg lg:mx-0"
             >
-              Scan any niche in any city. Larzo audits every website, tech stack and social profile, scores each opportunity{" "}
+              Scan any niche in any city on Google Maps. Larzo audits every website, tech stack and social profile, scores each opportunity{" "}
               <span className="text-white">with evidence</span> — then writes the pitch. Prospecting, without the forty open tabs.
             </motion.p>
 

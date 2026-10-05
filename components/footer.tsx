@@ -1,16 +1,18 @@
 import Link from "next/link";
+import { alternatives } from "@/lib/alternatives";
+import { useCases } from "@/lib/use-cases";
 import { Logo } from "./ui/logo";
 
 export function Footer() {
   return (
     <footer className="relative border-t border-white/[0.06] pt-16">
       <div className="container">
-        <div className="flex flex-col justify-between gap-10 md:flex-row">
-          <div className="max-w-sm">
+        <div className="flex flex-col justify-between gap-10 lg:flex-row">
+          <div className="max-w-xs shrink-0">
             <Logo />
             <p className="mt-4 text-sm leading-relaxed text-mute">Evidence-backed local business intelligence for agencies. Find the gap, prove it, pitch it.</p>
           </div>
-          <div className="grid grid-cols-2 gap-16 text-sm">
+          <div className="grid grid-cols-2 gap-x-10 gap-y-10 text-sm sm:grid-cols-4 lg:gap-x-14">
             <div>
               <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-mute-3">Product</p>
               <ul className="mt-4 space-y-2.5 text-mute">
@@ -18,6 +20,23 @@ export function Footer() {
                 <li><a className="hover:text-white" href="/#engines">Engines</a></li>
                 <li><a className="hover:text-white" href="/compare">Compare</a></li>
                 <li><Link className="hover:text-white" href="/watch">Watch the film</Link></li>
+              </ul>
+            </div>
+            <div>
+              <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-mute-3">Built for</p>
+              <ul className="mt-4 space-y-2.5 text-mute">
+                {useCases.map((u) => (
+                  <li key={u.slug}><Link className="hover:text-white" href={`/for/${u.slug}`}>{u.audience}</Link></li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-mute-3">Alternatives</p>
+              <ul className="mt-4 space-y-2.5 text-mute">
+                {alternatives.slice(0, 5).map((a) => (
+                  <li key={a.slug}><Link className="hover:text-white" href={`/alternatives/${a.slug}`}>{a.name} alternative</Link></li>
+                ))}
+                <li><Link className="hover:text-white" href="/alternatives">All comparisons</Link></li>
               </ul>
             </div>
             <div>

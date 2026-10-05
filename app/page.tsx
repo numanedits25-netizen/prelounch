@@ -13,10 +13,14 @@ import { Pitch } from "@/components/pitch";
 import { Problem } from "@/components/problem";
 import { Proof } from "@/components/proof";
 import { Workflow } from "@/components/workflow";
+import { JsonLd } from "@/components/json-ld";
+import { faqs } from "@/lib/faqs";
+import { faqLd, softwareLd } from "@/lib/seo";
 
 export default function Page() {
   return (
     <main className="relative">
+      <JsonLd data={[softwareLd, faqLd(faqs)]} />
       <Nav />
       <Hero />
       <Marquee />

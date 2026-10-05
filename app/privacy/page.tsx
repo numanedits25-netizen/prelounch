@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { LegalPage, LegalSection } from "@/components/legal-page";
 import { COMPANY, CONTACT_EMAIL } from "@/lib/site";
 
-export const metadata: Metadata = { title: "Privacy Policy — Larzo", description: "How Larzo handles your data on the private-beta waitlist." };
+export const metadata: Metadata = { title: "Privacy Policy", alternates: { canonical: "/privacy" }, description: "How Larzo handles your data on the private-beta waitlist." };
 
 export default function PrivacyPage() {
   return (

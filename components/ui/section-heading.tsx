@@ -8,8 +8,10 @@ export function SectionHeading({
   accent,
   copy,
   align = "center",
-  className
+  className,
+  as: Tag = "h2"
 }: {
+  as?: "h1" | "h2";
   eyebrow: string;
   title: string;
   accent?: string;
@@ -25,7 +27,7 @@ export function SectionHeading({
           {eyebrow}
         </span>
       </Reveal>
-      <h2 className="mt-5 font-display text-[2.1rem] font-bold leading-[1.05] tracking-[-0.03em] text-white sm:text-5xl lg:text-[3.4rem]">
+      <Tag className="mt-5 font-display text-[2.1rem] font-bold leading-[1.05] tracking-[-0.03em] text-white sm:text-5xl lg:text-[3.4rem]">
         <SplitWords text={title} />
         {accent ? (
           <>
@@ -33,7 +35,7 @@ export function SectionHeading({
             <SplitWords text={accent} className="text-gradient" delay={0.15} />
           </>
         ) : null}
-      </h2>
+      </Tag>
       {copy ? (
         <Reveal delay={0.2}>
           <p className="mt-5 text-base leading-relaxed text-mute sm:text-lg">{copy}</p>
