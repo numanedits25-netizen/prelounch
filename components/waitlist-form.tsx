@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, Check, Copy, Loader2, Mail } from "lucide-react";
 import { useState, type FormEvent } from "react";
-import { isValidEmail, joinWaitlist, type WaitlistResult } from "@/lib/waitlist";
+import { isValidEmail, joinWaitlist, saveRole, type WaitlistResult } from "@/lib/waitlist";
 import { cn } from "@/lib/utils";
 import { LinkedinIcon, XIcon } from "./ui/brand-icons";
 
@@ -95,6 +95,13 @@ export function WaitlistForm({ size = "lg", className, id }: { size?: "lg" | "md
                 </motion.p>
               ) : null}
             </AnimatePresence>
+            <p className="mt-2.5 pl-5 text-left text-[11px] text-mute-3">
+              By joining you agree to our{" "}
+              <a href="/privacy" className="underline decoration-white/20 underline-offset-2 hover:text-white">
+                Privacy Policy
+              </a>
+              .
+            </p>
           </motion.form>
         ) : (
           <motion.div
@@ -117,8 +124,18 @@ export function WaitlistForm({ size = "lg", className, id }: { size?: "lg" | "md
               <div className="min-w-0">
                 <p className="font-display text-lg font-bold text-white">{result?.alreadyJoined ? "You're already on the list." : "You're in. Spot reserved."}</p>
                 <p className="mt-1 text-sm text-mute">
-                  We'll email <span className="text-slate-200">{result?.email}</span> when your invite is ready. Share your link to move up the queue.
+                  We'll email <span className="text-slate-200">{result?.email}</span> when your invite is ready. Every friend who joins with your link moves you up 5 spots.
                 </p>
+                {result ? (
+                  <div className="mt-3 flex flex-wrap items-center gap-2 font-mono text-[11px]">
+                    <span className="rounded-full border border-cyan-400/30 bg-cyan-400/10 px-2.5 py-1 text-cyan-200">#{result.position.toLocaleString()} in line</span>
+                    {result.referrals > 0 ? (
+                      <span className="rounded-full border border-violet-400/30 bg-violet-500/10 px-2.5 py-1 text-violet-200">
+                        {result.referrals} referral{result.referrals === 1 ? "" : "s"}
+                      </span>
+                    ) : null}
+                  </div>
+                ) : null}
               </div>
             </div>
 
@@ -129,7 +146,10 @@ export function WaitlistForm({ size = "lg", className, id }: { size?: "lg" | "md
                   <button
                     key={r}
                     type="button"
-                    onClick={() => setRole(r)}
+                    onClick={() => {
+                      setRole(r);
+                      if (result) saveRole(result.referralCode, r);
+                    }}
                     className={cn(
                       "rounded-full border px-3 py-1 text-xs transition",
                       role === r ? "border-cyan-400/50 bg-cyan-400/10 text-cyan-200" : "border-white/10 text-mute hover:text-white"

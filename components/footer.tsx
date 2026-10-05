@@ -26,6 +26,8 @@ export function Footer() {
                 <li><a className="hover:text-white" href="/#faq">FAQ</a></li>
                 <li><a className="hover:text-white" href="mailto:leadzoneai@gmail.com">Contact</a></li>
                 <li><a className="hover:text-white" href="/#join">Join waitlist</a></li>
+                <li><Link className="hover:text-white" href="/privacy">Privacy</Link></li>
+                <li><Link className="hover:text-white" href="/terms">Terms</Link></li>
               </ul>
             </div>
           </div>

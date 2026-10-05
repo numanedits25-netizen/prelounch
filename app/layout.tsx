@@ -2,14 +2,16 @@ import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { DM_Sans, JetBrains_Mono, Syne } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 import { SmoothAnchors } from "@/components/smooth-anchors";
+import { SITE_URL } from "@/lib/site";
 
 const syne = Syne({ subsets: ["latin"], variable: "--font-syne", weight: ["500", "600", "700", "800"] });
 const dmSans = DM_Sans({ subsets: ["latin"], variable: "--font-dm-sans" });
 const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://larzo.io"),
+  metadataBase: new URL(SITE_URL),
   title: "Larzo — Every local business has a gap. Larzo finds it.",
   description:
     "Scan any niche in any city. Larzo audits every website, tech stack and social profile, scores the opportunity with evidence, and drafts the pitch. Join the private beta.",
@@ -38,6 +40,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body>
         {children}
         <SmoothAnchors />
+        <Analytics />
       </body>
     </html>
   );
