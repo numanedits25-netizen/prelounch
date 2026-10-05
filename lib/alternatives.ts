@@ -138,7 +138,7 @@ export const alternatives: Alternative[] = [
     chooseLarzo: "You want the qualifying done for you, with proof you can quote in the pitch.",
     faqs: [
       { q: "Is Larzo a D7 Lead Finder alternative?", a: "Yes, for agencies who want more than contact fields. Larzo finds the same kind of local businesses, then audits them, ranks them by opportunity and drafts outreach." },
-      { q: "Does Larzo limit searches per day?", a: "Plans and limits will be announced before public launch. Founding members lock in a special rate." },
+      { q: "Does Larzo limit searches per day?", a: "Plans and limits will be announced before public launch. Early members get free months at launch." },
       { q: "Does Larzo invent data when it can't find it?", a: "No. When a signal can't be verified, Larzo shows it as unknown rather than guessing." }
     ]
   },

@@ -79,7 +79,7 @@ export default async function AlternativePage({ params }: Props) {
             const glance = [
                   ["Type of tool", a.category, "Local business intelligence workspace"],
                   ["Best for", a.bestFor, "Agencies and freelancers selling services to local businesses"],
-                  ["Pricing model", a.pricingModel, "Private beta — founding members lock in a special rate"],
+                  ["Pricing model", a.pricingModel, "Private beta — early members get free months at launch"],
                   ["What it checks per business", a.audit, "Website speed (Core Web Vitals), tech, verified socials, business and opportunity"],
                   ["Opportunity score with evidence", "Not their focus", "Every finding traced to its source"],
                   ["Outreach", a.outreach, "Email, call script, proposal, audit and DM written from verified findings — sent from your inbox"]

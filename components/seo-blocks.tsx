@@ -77,7 +77,7 @@ export function FaqList({ items }: { items: { q: string; a: string }[] }) {
   );
 }
 
-export function JoinCta({ id, title = "Get founding access to Larzo.", copy = "Private beta, invites in waves. Founding members lock in a special rate." }: { id: string; title?: string; copy?: string }) {
+export function JoinCta({ id, title = "Get founding access to Larzo.", copy = "Private beta, invites in waves. Early members get free months at launch." }: { id: string; title?: string; copy?: string }) {
   return (
     <section id="join" className="relative scroll-mt-24 py-20 sm:py-28">
       <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">

@@ -125,7 +125,7 @@ export function Hero() {
               transition={{ duration: 0.8, delay: 1.2 }}
               className="mt-5 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-mute-2 lg:justify-start"
             >
-              {["Free early access", "Founding-member pricing", "No spam, ever"].map((t) => (
+              {["Free early access", "Free months for early members", "No spam, ever"].map((t) => (
                 <li key={t} className="flex items-center gap-1.5">
                   <Check className="size-3.5 text-cyan-400" /> {t}
                 </li>

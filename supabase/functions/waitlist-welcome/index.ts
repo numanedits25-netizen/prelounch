@@ -5,6 +5,7 @@
 // If the new signup came in through someone's referral link, it then sends that
 // referrer a "you moved up" email (claimed via referral_notified_at on the NEW row,
 // so each referral triggers at most one email; the friend's email is never shown).
+// No spot numbers are ever shown: ranking stays internal so we only promise what we control.
 // Secret required: RESEND_API_KEY (Supabase → Edge Functions → Secrets).
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 
@@ -24,8 +25,7 @@ const sb = (path: string, init: RequestInit = {}) =>
 const json = (body: unknown, status = 200) =>
   new Response(JSON.stringify(body), { status, headers: { "Content-Type": "application/json" } });
 
-function emailHtml(position: number | null, link: string) {
-  const pos = position ? `#${position}` : "in";
+function emailHtml(link: string) {
   return `<!doctype html><html><body style="margin:0;padding:0;background:#050507;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#050507;padding:32px 12px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
 <tr><td align="center">
@@ -40,13 +40,14 @@ function emailHtml(position: number | null, link: string) {
 <tr><td style="padding:24px 32px 8px;">
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#111119;border:1px solid #23233a;border-radius:14px;">
   <tr><td align="center" style="padding:22px;">
-    <p style="margin:0;color:#a1a1aa;font-size:13px;">Your spot in line</p>
-    <p style="margin:6px 0 0;color:#ffffff;font-size:40px;font-weight:800;letter-spacing:-1px;">${pos}</p>
+    <p style="margin:0;color:#22d3ee;font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:600;">Early member perk</p>
+    <p style="margin:8px 0 0;color:#ffffff;font-size:22px;font-weight:800;letter-spacing:-0.5px;">Free months of Larzo at launch 🎁</p>
+    <p style="margin:8px 0 0;color:#71717a;font-size:13px;">Because you joined before we opened.</p>
   </td></tr></table>
 </td></tr>
 <tr><td style="padding:20px 32px 4px;">
   <p style="margin:0;color:#f8fafc;font-size:16px;font-weight:600;">Want to get in sooner?</p>
-  <p style="margin:8px 0 14px;color:#a1a1aa;font-size:14px;line-height:1.6;">Share your personal link. Every friend who joins with it moves you up <b style="color:#f8fafc;">5 spots</b>.</p>
+  <p style="margin:8px 0 14px;color:#a1a1aa;font-size:14px;line-height:1.6;">Share your personal link. Every friend who joins with it <b style="color:#f8fafc;">gets you in sooner</b>.</p>
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#050507;border:1px dashed #33334d;border-radius:10px;"><tr><td style="padding:12px 14px;color:#22d3ee;font-size:14px;word-break:break-all;"><a href="${link}" style="color:#22d3ee;text-decoration:none;">${link}</a></td></tr></table>
   <table role="presentation" cellpadding="0" cellspacing="0" style="margin-top:18px;"><tr><td style="border-radius:999px;background:#4f46e5;background-image:linear-gradient(135deg,#7c3aed,#4f46e5,#06b6d4);">
     <a href="${link}" style="display:inline-block;padding:12px 24px;color:#ffffff;font-size:14px;font-weight:600;text-decoration:none;">Open my referral link →</a>
@@ -60,16 +61,12 @@ function emailHtml(position: number | null, link: string) {
 </td></tr></table></body></html>`;
 }
 
-function emailText(position: number | null, link: string) {
-  return `Welcome to Larzo!\n\nYou're on the list${position ? ` at #${position}` : ""}.\n\nEvery friend who joins with your link moves you up 5 spots:\n${link}\n\nWe'll email you when your access is ready. Questions? Just reply.\n\nDon't want these? Reply "unsubscribe".`;
+function emailText(link: string) {
+  return `Welcome to Larzo!\n\nYou're on the list. As an early member you get free months of Larzo at launch.\n\nWant to get in sooner? Every friend who joins with your link moves you up the list:\n${link}\n\nWe'll email you when your access is ready. Questions? Just reply.\n\nDon't want these? Reply "unsubscribe".`;
 }
 
-function movedUpHtml(position: number | null, prev: number | null, referrals: number, link: string) {
-  const pos = position ? `#${position}` : "higher";
-  const jump = position && prev && prev > position ? `<p style="margin:8px 0 0;color:#22d3ee;font-size:14px;font-weight:600;">▲ up from #${prev}</p>` : "";
-  const top = position === 1
-    ? "You're at the very front of the line. First invites go out to you."
-    : "Keep sharing — every friend who joins with your link moves you up another <b style=\"color:#f8fafc;\">5 spots</b>.";
+function movedUpHtml(referrals: number, link: string) {
+  const top = "Keep sharing. Every friend who joins with your link moves you further up the list and <b style=\"color:#f8fafc;\">gets you in sooner</b>.";
   return `<!doctype html><html><body style="margin:0;padding:0;background:#050507;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#050507;padding:32px 12px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
 <tr><td align="center">
@@ -84,9 +81,9 @@ function movedUpHtml(position: number | null, prev: number | null, referrals: nu
 <tr><td style="padding:24px 32px 8px;">
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#111119;border:1px solid #23233a;border-radius:14px;">
   <tr><td align="center" style="padding:22px;">
-    <p style="margin:0;color:#a1a1aa;font-size:13px;">Your new spot in line</p>
-    <p style="margin:6px 0 0;color:#ffffff;font-size:40px;font-weight:800;letter-spacing:-1px;">${pos}</p>${jump}
-    <p style="margin:10px 0 0;color:#71717a;font-size:13px;">Friends joined with your link: <b style="color:#f8fafc;">${referrals}</b></p>
+    <p style="margin:0;color:#a1a1aa;font-size:13px;">Friends joined with your link</p>
+    <p style="margin:6px 0 0;color:#ffffff;font-size:40px;font-weight:800;letter-spacing:-1px;">${referrals}</p>
+    <p style="margin:8px 0 0;color:#22d3ee;font-size:14px;font-weight:600;">▲ You moved up the list</p>
   </td></tr></table>
 </td></tr>
 <tr><td style="padding:20px 32px 4px;">
@@ -104,13 +101,8 @@ function movedUpHtml(position: number | null, prev: number | null, referrals: nu
 </td></tr></table></body></html>`;
 }
 
-function movedUpText(position: number | null, prev: number | null, referrals: number, link: string) {
-  return `You just moved up on the Larzo waitlist!\n\nSomeone joined with your referral link.\nYour new spot: ${position ? `#${position}` : "higher"}${position && prev && prev > position ? ` (up from #${prev})` : ""}\nFriends joined with your link: ${referrals}\n\nKeep sharing, every friend moves you up 5 spots:\n${link}\n\nDon't want these? Reply "unsubscribe".`;
-}
-
-async function getPosition(id: number, referrals: number): Promise<number | null> {
-  const p = await sb("rpc/waitlist_position", { method: "POST", body: JSON.stringify({ p_id: id, p_referrals: referrals }) });
-  return p.ok ? Number(await p.json()) || null : null;
+function movedUpText(referrals: number, link: string) {
+  return `You just moved up on the Larzo waitlist!\n\nSomeone joined with your referral link.\nFriends joined with your link: ${referrals}\n\nKeep sharing, every friend gets you in sooner:\n${link}\n\nDon't want these? Reply "unsubscribe".`;
 }
 
 // Tell the referrer they moved up. Never throws; returns a short status string.
@@ -124,16 +116,14 @@ async function notifyReferrer(newId: number, refCode: string): Promise<string> {
     const refs = rr.ok ? await rr.json() : [];
     if (!refs.length) return "no-referrer";
     const ref = refs[0];
-    const now = await getPosition(ref.id, ref.referrals);
-    const prev = await getPosition(ref.id, Math.max(0, ref.referrals - 1));
     const link = `${SITE}/?ref=${ref.referral_code}`;
     const r = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: { Authorization: `Bearer ${RESEND}`, "Content-Type": "application/json" },
       body: JSON.stringify({
         from: FROM, to: [ref.email], reply_to: REPLY_TO,
-        subject: now ? `You moved up to #${now} on the Larzo waitlist 🚀` : "You moved up on the Larzo waitlist 🚀",
-        html: movedUpHtml(now, prev, ref.referrals, link), text: movedUpText(now, prev, ref.referrals, link),
+        subject: "Your link worked, you moved up the Larzo waitlist 🚀",
+        html: movedUpHtml(ref.referrals, link), text: movedUpText(ref.referrals, link),
         headers: { "List-Unsubscribe": `<mailto:${REPLY_TO}?subject=unsubscribe>` },
       }),
     });
@@ -165,16 +155,14 @@ Deno.serve(async (req) => {
   if (!rows.length) return json({ skipped: true });
   const row = rows[0];
 
-  const pos = await getPosition(row.id, row.referrals);
-
   const link = `${SITE}/?ref=${row.referral_code}`;
   const r = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: { Authorization: `Bearer ${RESEND}`, "Content-Type": "application/json" },
     body: JSON.stringify({
       from: FROM, to: [row.email], reply_to: REPLY_TO,
-      subject: pos ? `You're #${pos} on the Larzo waitlist 🎉` : "You're on the Larzo waitlist 🎉",
-      html: emailHtml(pos, link), text: emailText(pos, link),
+      subject: "You're on the Larzo waitlist 🎉",
+      html: emailHtml(link), text: emailText(link),
       headers: { "List-Unsubscribe": `<mailto:${REPLY_TO}?subject=unsubscribe>` },
     }),
   });

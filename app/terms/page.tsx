@@ -13,9 +13,9 @@ export default function TermsPage() {
       <LegalSection h="The waitlist">
         <ul>
           <li>Joining is free and doesn&rsquo;t commit you to buying anything.</li>
-          <li>Your queue position is an estimate. We send invites in waves and may prioritise people who are a good fit for the beta.</li>
-          <li>Referrals move you up the queue. Signups that are fake, automated or self-referred don&rsquo;t count, and we may remove them.</li>
-          <li>Founding-member pricing and perks are offered to people invited in the early waves. We&rsquo;ll confirm the details before you&rsquo;re asked to pay anything.</li>
+          <li>We send invites in waves, earliest signups first, and may prioritise people who are a good fit for the beta.</li>
+          <li>Referrals get you invited sooner. Signups that are fake, automated or self-referred don&rsquo;t count, and we may remove them.</li>
+          <li>Everyone who joins the waitlist before public launch gets free months of Larzo at launch. We&rsquo;ll confirm the exact length and details before launch, and before you&rsquo;re asked to pay anything.</li>
         </ul>
       </LegalSection>
       <LegalSection h="What&rsquo;s on this site">

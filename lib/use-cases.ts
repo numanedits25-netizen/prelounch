@@ -127,7 +127,7 @@ export const useCases: UseCase[] = [
     niches: ["Cafés", "Photographers", "Tradespeople", "Boutiques", "Studios", "Clinics"],
     faqs: [
       { q: "How do freelancers find local clients?", a: "The most reliable way is to pitch businesses with a specific, provable problem you can fix. Larzo finds those businesses in any niche and city and gives you the evidence to quote." },
-      { q: "Is Larzo affordable for solo freelancers?", a: "Pricing will be announced before public launch. Founding members on the waitlist lock in a special rate." },
+      { q: "Is Larzo affordable for solo freelancers?", a: "Pricing will be announced before public launch. Early members on the waitlist get free months at launch." },
       { q: "Do I need technical skills?", a: "No. You type a niche and a city; Larzo does the rest." }
     ]
   }

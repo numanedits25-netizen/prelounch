@@ -122,13 +122,13 @@ export function WaitlistForm({ size = "lg", className, id }: { size?: "lg" | "md
                 <Check className="size-5 text-white" strokeWidth={3} />
               </motion.span>
               <div className="min-w-0">
-                <p className="font-display text-lg font-bold text-white">{result?.alreadyJoined ? "You're already on the list." : "You're in. Spot reserved."}</p>
+                <p className="font-display text-lg font-bold text-white">{result?.alreadyJoined ? "You're already on the list." : "You're in. Welcome to Larzo."}</p>
                 <p className="mt-1 text-sm text-mute">
-                  We'll email <span className="text-slate-200">{result?.email}</span> when your invite is ready. Every friend who joins with your link moves you up 5 spots.
+                  We'll email <span className="text-slate-200">{result?.email}</span> when your invite is ready. Early members get free months of Larzo at launch, and every friend who joins with your link gets you in sooner.
                 </p>
                 {result ? (
                   <div className="mt-3 flex flex-wrap items-center gap-2 font-mono text-[11px]">
-                    <span className="rounded-full border border-cyan-400/30 bg-cyan-400/10 px-2.5 py-1 text-cyan-200">#{result.position.toLocaleString()} in line</span>
+                    <span className="rounded-full border border-cyan-400/30 bg-cyan-400/10 px-2.5 py-1 text-cyan-200">Early member</span>
                     {result.referrals > 0 ? (
                       <span className="rounded-full border border-violet-400/30 bg-violet-500/10 px-2.5 py-1 text-violet-200">
                         {result.referrals} referral{result.referrals === 1 ? "" : "s"}

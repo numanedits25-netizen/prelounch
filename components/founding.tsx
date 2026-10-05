@@ -7,7 +7,7 @@ import { SectionHeading } from "./ui/section-heading";
 
 const perks = [
   { icon: Zap, t: "First-wave access", c: "Skip the public queue. Founding members get invites before anyone else." },
-  { icon: BadgePercent, t: "Founding-member pricing", c: "A rate reserved for the people who backed us early." },
+  { icon: BadgePercent, t: "Free months at launch", c: "Early members get free months of Larzo when we open. Our thank-you for backing us early." },
   { icon: MessagesSquare, t: "A direct line to the team", c: "Shape the roadmap. Your feature requests jump the queue." },
   { icon: Crown, t: "Priority onboarding", c: "We'll help set up your first niche scans and pipeline." }
 ];
@@ -15,7 +15,7 @@ const perks = [
 const steps = [
   { icon: UserPlus, t: "Join", c: "Drop your email — takes five seconds." },
   { icon: Share2, t: "Share", c: "Get a personal link for other agency owners." },
-  { icon: Gift, t: "Move up", c: "Every signup through your link moves you up the list." }
+  { icon: Gift, t: "Move up", c: "Every friend who joins with your link gets you in sooner." }
 ];
 
 export function Founding() {
